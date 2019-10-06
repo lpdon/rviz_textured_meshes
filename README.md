@@ -1,7 +1,7 @@
 # RVIZ Textured Meshes
 Plugin: Displays textured meshes (realtime or static sensor_msgs/Image topics) in 3D space
 
-![Demo](https://github.com/lpdon/rviz_textured_quads/blob/master/gifs/cap.gif)
+![Demo](https://github.com/lpdon/rviz_textured_meshes/blob/master/gifs/cap.gif)
 
 ## Usage
 
