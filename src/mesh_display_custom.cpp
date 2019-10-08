@@ -177,6 +177,8 @@ void MeshDisplayCustom::updateDisplayMesh()
     return;
   }
 
+  mesh_mutex_.lock();
+
   if (mesh_filename.has_filename() && fs::exists(mesh_path)) 
   {
     try
@@ -223,6 +225,8 @@ void MeshDisplayCustom::updateDisplayMesh()
       ROS_ERROR("Cannot load mesh file");
     }
   }
+
+  mesh_mutex_.unlock();
 }
 
 void MeshDisplayCustom::subscribe()
@@ -306,6 +310,7 @@ void MeshDisplayCustom::writeCvToTex(cv::Mat& img, Ogre::TexturePtr tex)
 void MeshDisplayCustom::update(float wall_dt, float ros_dt)
 {
   image_mutex_.lock();
+  mesh_mutex_.lock();
 
   if (cur_image_)
   {
@@ -326,6 +331,7 @@ void MeshDisplayCustom::update(float wall_dt, float ros_dt)
     new_image_ = false;
   }
   
+  mesh_mutex_.unlock();
   image_mutex_.unlock();
 
   setStatus(StatusProperty::Ok, "Display Image", "ok");

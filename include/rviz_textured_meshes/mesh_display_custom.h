@@ -140,6 +140,7 @@ private:
   RenderPanel* render_panel_;  // this is the active render panel
 
   boost::mutex image_mutex_;
+  boost::mutex mesh_mutex_;
 
   Ogre::Entity* custom_mesh_entity_;
   Ogre::SceneNode* custom_mesh_node_;
